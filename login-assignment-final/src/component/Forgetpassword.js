@@ -16,8 +16,14 @@ class ForgetPassword extends Component {
         this.props.actions.resetPassword(email);
     }
     handleEmail = (e) => {
-        console.log("email", e)
-        this.props.actions.passwordChange(e);
+         var email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (email.test(e.email)) {
+            this.props.actions.passwordChange(e);
+        }
+        else {
+            alert("Invalid email,Please enter valid emailid")
+        }
+
     }
     render() {
         return (
