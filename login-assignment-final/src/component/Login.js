@@ -17,7 +17,20 @@ class Login extends Component {
     }
 
     handleLogin = (e) => {
-        this.props.actions.userLoginCheck(e);
+       var email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (email.test(e.username)) {
+            if (e.password.length < 5) {
+                alert("Password needs to be atleast 5 characters long");
+            }
+            else{
+            this.props.actions.userLoginCheck(e);
+            }
+        }
+        else {
+            alert("Invalid username,Please enter valid username,username must be a emailid")
+        }
+        
+        console.log(e)
     }
     render() {
 
